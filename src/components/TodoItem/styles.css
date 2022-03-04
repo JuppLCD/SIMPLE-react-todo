@@ -1,0 +1,31 @@
+.TodoItem {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 7px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.418);
+}
+.TodoItem input {
+	display: none;
+}
+.TodoItem-text--complete {
+	text-decoration: line-through;
+	color: rgba(105, 105, 105, 0.808);
+}
+.TodoItem-Icon {
+	font-size: 1.5rem;
+	display: flex;
+	align-items: center;
+	margin-right: 7px;
+	color: rgba(105, 105, 105, 0.808);
+}
+.TodoItem-Icon--complete {
+	color: rgb(55, 211, 16);
+}
+.TodoItem label {
+	display: flex;
+	justify-content: center;
+	margin-right: 10px;
+}

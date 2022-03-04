@@ -1,0 +1,29 @@
+.form-newTodo {
+	width: 100%;
+	max-width: 400px;
+}
+.form-newTodo label {
+	display: block;
+	font-size: 1.5rem;
+	text-align: center;
+}
+.form-group {
+	width: 100%;
+	display: flex;
+	margin-top: 20px;
+}
+.form-group input {
+	flex-grow: 1;
+	padding: 5px 15px;
+	border: none;
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
+}
+@media (max-width: 300px) {
+	.btn-reset {
+		display: none;
+	}
+}
