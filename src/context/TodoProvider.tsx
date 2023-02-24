@@ -4,10 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import TodoContext from './TodoContext';
 
-import { getTodos } from '../utilities/getTodos';
-import { updateTodo } from '../utilities/updateTodo';
-import { deleteTodo } from '../utilities/deleteTodo';
-import { newTodo } from '../utilities/newTodo';
+import TodoListService from './../services/TodoListService';
 
 import type { FormEvent } from 'react';
 import type { Todo } from '../types/Todo.interface';
@@ -19,10 +16,11 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 	const [edit, setEdit] = useState(false);
 	const [loading, setloading] = useState(false);
 
+	const TodoListServices = new TodoListService();
 	useEffect(() => {
 		(async () => {
 			setloading(true);
-			const data = await getTodos();
+			const data = await TodoListServices.getTodos();
 			if (data.error) {
 				toast.error('Error getting ToDos');
 				setloading(false);
@@ -38,7 +36,7 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 	const onSubmit = async (e: FormEvent<HTMLFormElement>, newTodoValue: string) => {
 		e.preventDefault();
 		setloading(true);
-		const todo = await newTodo(newTodoValue);
+		const todo = await TodoListServices.newTodo(newTodoValue);
 		if (todo.error) {
 			toast.error('Error creating ToDo');
 			setloading(false);
@@ -53,7 +51,7 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 	};
 	// Delete Todo
 	const BorrarTodo = async (id: string) => {
-		const menssage = await deleteTodo(id);
+		const menssage = await TodoListServices.deleteTodo(id);
 		if (!menssage.deleted || menssage.error) {
 			toast.error('Error to delete ToDo');
 			return;
@@ -72,7 +70,7 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 		todoMofificado.completed = !todoMofificado.completed;
 
 		// Put Todo
-		const menssage = await updateTodo(id, todoMofificado);
+		const menssage = await TodoListServices.updateTodo(id, todoMofificado);
 		if (!menssage.edited || menssage.error) {
 			todoMofificado.completed = !todoMofificado.completed;
 			toast.error('Error to modificate ToDo');
@@ -88,7 +86,7 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 		if (todoToEdit.text === '') {
 			return;
 		}
-		const menssage = await updateTodo(todoToEdit._id, todoToEdit);
+		const menssage = await TodoListServices.updateTodo(todoToEdit._id, todoToEdit);
 		if (!menssage.edited || menssage.error) {
 			toast.error('Error to modificate ToDo');
 			return;
