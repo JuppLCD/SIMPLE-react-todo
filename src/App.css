@@ -8,7 +8,7 @@ header {
 	padding: 40px 0;
 }
 header::after {
-	content: "";
+	content: '';
 	position: fixed;
 	z-index: -1;
 	top: 0;

@@ -1,8 +1,8 @@
-import { url } from "./../config";
-export const deleteTodo = async (id) => {
+import { url } from '../config';
+export const deleteTodo = async (id: string) => {
 	try {
 		const res = await fetch(`${url}/deleteTodo/${id}`, {
-			method: "DELETE",
+			method: 'DELETE',
 		});
 		const mensage = await res.json();
 		return mensage;

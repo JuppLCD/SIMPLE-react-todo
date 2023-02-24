@@ -1,4 +1,4 @@
-import { url } from "./../config";
+import { url } from '../config';
 export const getTodos = async () => {
 	try {
 		const res = await fetch(`${url}/allTodos`);

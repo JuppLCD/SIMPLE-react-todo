@@ -1,13 +1,15 @@
-import { useContext } from "react";
-import { TodoContext } from "../../useContext";
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
 
-import { FormTodo } from "../FormTodo/FormTodo";
-import { TodoList } from "../TodoList/TodoList";
-import { TodoItem } from "../TodoItem/TodoItem";
-import { EditTodoComponent } from "../EditTodoComponent/EditTodoComponent";
-import { Loading } from "../Loading/Loading";
+import FormTodo from './FormTodo';
+import TodoItem from './TodoItem';
+import EditTodoComponent from './EditTodoComponent';
+import TodoList from './TodoList';
+import Loading from './Loading';
 
-export const AppUi = () => {
+import type { TodoContextType } from '../context/TodoContext';
+
+export default function AppUi() {
 	const {
 		todos,
 		onSubmit,
@@ -20,14 +22,14 @@ export const AppUi = () => {
 		edit,
 		setEdit,
 		loading,
-	} = useContext(TodoContext);
+	} = useContext(TodoContext) as TodoContextType;
 	return (
 		<>
-			<header className="header">
+			<header className='header'>
 				<h1> ToDo React </h1>
 			</header>
-			<div className="conteiner">
-				<div className="conteiner-todo">
+			<div className='conteiner'>
+				<div className='conteiner-todo'>
 					<FormTodo onSubmit={onSubmit} />
 					{edit && (
 						<EditTodoComponent
@@ -37,7 +39,7 @@ export const AppUi = () => {
 							handelSubmitForm={handelSubmitForm}
 						/>
 					)}
-					<div className="subtitle">
+					<div className='subtitle'>
 						<h2>Your ToDos:</h2>
 						{todos.length === 0 && <p>Create your ToDo ...</p>}
 					</div>
@@ -57,4 +59,4 @@ export const AppUi = () => {
 			</div>
 		</>
 	);
-};
+}

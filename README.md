@@ -1,3 +1,1 @@
-# todo-app-frontend-React
-
-App ToDo with React
+# App ToDo with React
