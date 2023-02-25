@@ -1,15 +1,9 @@
 import './styles.css';
 
-interface Props {
-	clickFuntion?: any;
-	children: JSX.Element | string;
-	classBtn?: string;
-	typeBtn?: 'button' | 'submit' | 'reset';
-}
-export default function Button({ clickFuntion, children, typeBtn = 'button', classBtn = '' }: Props) {
-	return (
-		<button type={typeBtn} className={`btn ${classBtn}`} onClick={clickFuntion}>
-			{children}
-		</button>
-	);
+import type { ButtonHTMLAttributes } from 'react';
+
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export default function Button({ className, ...props }: Props) {
+	return <button className={`btn ${className}`} {...props} />;
 }

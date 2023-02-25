@@ -1,7 +1,8 @@
-import Button from '../Button';
 import { AiFillDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
+
+import Button from '../Button';
 
 import './styles.css';
 
@@ -25,10 +26,10 @@ export default function TodoItem({ todo, BorrarTodo, onChangeChexbox, btnEditTod
 				{text}
 			</label>
 			<div className='TodoItem-btns'>
-				<Button classBtn={'btn-edit'} clickFuntion={() => btnEditTodoValue(_id)}>
+				<Button className={'btn-edit'} onClick={() => btnEditTodoValue(_id)}>
 					<AiOutlineEdit />
 				</Button>
-				<Button classBtn={'btn-delete'} clickFuntion={() => BorrarTodo(_id)}>
+				<Button className={'btn-delete'} onClick={() => BorrarTodo(_id)}>
 					<AiFillDelete />
 				</Button>
 			</div>

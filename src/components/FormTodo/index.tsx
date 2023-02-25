@@ -23,13 +23,13 @@ export default function FormTodo({ onSubmit }: Props) {
 					<label htmlFor='createTodo'>New ToDo</label>
 					<div className='form-group'>
 						<input id='createTodo' placeholder='Write you ToDo...' value={newTodoValue} onChange={handelInputTodo} />
-						<Button clickFuntion={() => setNewTodoValue('')} classBtn={'btn-reset'}>
+						<Button onClick={() => setNewTodoValue('')} className={'btn-reset'} type='reset'>
 							Reset
 						</Button>
 					</div>
 				</div>
 
-				<Button classBtn={'btn-add'} typeBtn='submit'>
+				<Button className={'btn-add'} type='submit'>
 					Add
 				</Button>
 			</form>

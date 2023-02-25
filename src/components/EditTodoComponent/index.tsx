@@ -3,7 +3,7 @@ import Button from '../Button';
 import './styles.css';
 
 import type { Todo } from '../../types/Todo.interface';
-import type { Dispatch, FormEvent, ChangeEventHandler, ChangeEvent } from 'react';
+import type { Dispatch, FormEvent, ChangeEvent } from 'react';
 
 interface Props {
 	todoToEdit: Todo | {};
@@ -28,10 +28,10 @@ export default function EditTodoComponent({ todoToEdit, setTodoToEdit, setEdit, 
 				/>
 			</div>
 			<div className='formEdit-btnContainer'>
-				<Button classBtn={'btn-edit'} typeBtn='submit'>
+				<Button className={'btn-edit'} type='submit'>
 					Edit
 				</Button>
-				<Button classBtn={'btn-delete'} clickFuntion={() => setEdit(false)}>
+				<Button className={'btn-delete'} onClick={() => setEdit(false)}>
 					Cancel
 				</Button>
 			</div>
