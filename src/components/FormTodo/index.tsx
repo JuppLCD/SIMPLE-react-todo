@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Button from './../Button';
 
-import './styles.css';
+import styles from './FormTodo.module.css';
 
 import type { FormEvent, ChangeEvent } from 'react';
 
@@ -18,12 +18,12 @@ export default function FormTodo({ onSubmit }: Props) {
 	};
 	return (
 		<>
-			<form className='form-newTodo' onSubmit={(e) => onSubmit(e, newTodoValue)}>
+			<form className={styles['form-newTodo']} onSubmit={(e) => onSubmit(e, newTodoValue)}>
 				<div>
 					<label htmlFor='createTodo'>New ToDo</label>
-					<div className='form-group'>
+					<div className={styles['form-group']}>
 						<input id='createTodo' placeholder='Write you ToDo...' value={newTodoValue} onChange={handelInputTodo} />
-						<Button onClick={() => setNewTodoValue('')} className={'btn-reset'} type='reset'>
+						<Button onClick={() => setNewTodoValue('')} className={`${styles['btn-reset']} btn-reset`} type='reset'>
 							Reset
 						</Button>
 					</div>

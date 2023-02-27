@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import type { Dispatch, FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import type { Todo } from '../types/Todo.interface';
 
 export type TodoContextType = {
@@ -9,12 +9,12 @@ export type TodoContextType = {
 	edit: boolean;
 	todoToEdit: Todo | {};
 	onSubmit: (e: FormEvent<HTMLFormElement>, newTodoValue: string) => void;
-	handelSubmitForm: (e: FormEvent<HTMLFormElement>, todoToEdit: Todo) => void;
+	handelSubmitTodoEdited: (e: FormEvent<HTMLFormElement>, todoToEdit: Todo) => void;
 	onChangeChexbox: (id: string) => void;
-	BorrarTodo: (id: string) => void;
-	btnEditTodoValue: (id: string) => void;
-	setTodoToEdit: Dispatch<React.SetStateAction<{} | Todo>>;
-	setEdit: Dispatch<React.SetStateAction<boolean>>;
+	deleteTodo: (id: string) => void;
+	handelInputEditTodo: (e: ChangeEvent<HTMLInputElement>) => void;
+	editTodoValue: (id: string) => void;
+	closeEditTodo: () => void;
 };
 
 const TodoContext = createContext<TodoContextType | undefined>(undefined);

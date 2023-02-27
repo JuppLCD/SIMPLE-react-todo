@@ -3,7 +3,7 @@ import TodoContext from '../context/TodoContext';
 
 import FormTodo from './FormTodo';
 import TodoItem from './TodoItem';
-import EditTodoComponent from './EditTodoComponent';
+import EditTodo from './EditTodo';
 import TodoList from './TodoList';
 import Loading from './Loading';
 
@@ -14,13 +14,13 @@ export default function AppUi() {
 		todos,
 		onSubmit,
 		onChangeChexbox,
-		BorrarTodo,
-		handelSubmitForm,
-		btnEditTodoValue,
+		deleteTodo,
+		handelSubmitTodoEdited,
+		editTodoValue,
 		todoToEdit,
-		setTodoToEdit,
+		handelInputEditTodo,
 		edit,
-		setEdit,
+		closeEditTodo,
 		loading,
 	} = useContext(TodoContext) as TodoContextType;
 	return (
@@ -32,11 +32,11 @@ export default function AppUi() {
 				<div className='conteiner-todo'>
 					<FormTodo onSubmit={onSubmit} />
 					{edit && (
-						<EditTodoComponent
+						<EditTodo
 							todoToEdit={todoToEdit}
-							setEdit={setEdit}
-							setTodoToEdit={setTodoToEdit}
-							handelSubmitForm={handelSubmitForm}
+							closeEditTodo={closeEditTodo}
+							handelInputEditTodo={handelInputEditTodo}
+							handelSubmitTodoEdited={handelSubmitTodoEdited}
 						/>
 					)}
 					<div className='subtitle'>
@@ -49,9 +49,9 @@ export default function AppUi() {
 							<TodoItem
 								key={todo._id}
 								todo={todo}
-								BorrarTodo={BorrarTodo}
+								deleteTodo={deleteTodo}
 								onChangeChexbox={onChangeChexbox}
-								btnEditTodoValue={btnEditTodoValue}
+								editTodoValue={editTodoValue}
 							/>
 						))}
 					</TodoList>

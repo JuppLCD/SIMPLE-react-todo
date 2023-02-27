@@ -6,7 +6,7 @@ import TodoContext from './TodoContext';
 
 import TodoListService from './../services/TodoListService';
 
-import type { FormEvent } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import type { Todo } from '../types/Todo.interface';
 
 export default function TodoProvider({ children }: { children: JSX.Element }) {
@@ -50,7 +50,7 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 		setrenderAgain(!renderAgain);
 	};
 	// Delete Todo
-	const BorrarTodo = async (id: string) => {
+	const deleteTodo = async (id: string) => {
 		const menssage = await TodoListServices.deleteTodo(id);
 		if (!menssage.deleted || menssage.error) {
 			toast.error('Error to delete ToDo');
@@ -98,10 +98,18 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 		setEdit(false);
 		setTodos(newtodos);
 	};
-	const btnEditTodoValue = (id: string) => {
+	const editTodoValue = (id: string) => {
 		const todoToEditValue = todos.filter((todo) => todo._id === id)[0];
 		setTodoToEdit(todoToEditValue);
 		setEdit(true);
+	};
+
+	const closeEditTodo = () => {
+		setEdit(false);
+	};
+
+	const handelInputEditTodo = (e: ChangeEvent<HTMLInputElement>) => {
+		setTodoToEdit((prev) => ({ ...todoToEdit, text: e.target.value }));
 	};
 
 	const valueProvider = {
@@ -112,10 +120,10 @@ export default function TodoProvider({ children }: { children: JSX.Element }) {
 		onSubmit,
 		handelSubmitForm,
 		onChangeChexbox,
-		BorrarTodo,
-		btnEditTodoValue,
-		setTodoToEdit,
-		setEdit,
+		deleteTodo,
+		editTodoValue,
+		handelInputEditTodo,
+		closeEditTodo,
 	};
 
 	return (
